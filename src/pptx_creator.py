@@ -16,9 +16,20 @@ logger = logging.getLogger(__name__)
 class PPTXCreator:
     """A utility class for creating PowerPoint presentations programmatically."""
     
-    def __init__(self):
-        """Initialize a new PowerPoint presentation."""
-        self.presentation = Presentation()
+    def __init__(self, template_path: Optional[str] = None):
+        """
+        Initialize a new PowerPoint presentation.
+        
+        Args:
+            template_path: Optional path to .pptx template file for styling
+        """
+        if template_path and Path(template_path).exists():
+            # Simple approach: just load template as-is
+            # User should manually remove content slides from template file if needed
+            self.presentation = Presentation(template_path)
+            logger.info(f"Using template: {template_path}")
+        else:
+            self.presentation = Presentation()
         
     def add_title_slide(
         self, 

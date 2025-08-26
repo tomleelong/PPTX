@@ -40,6 +40,9 @@ Thumbs.db
 *.pptx
 !examples/*.pptx
 
+# Template files (but allow templates directory structure)
+templates/*.pptx
+
 # Test artifacts
 .pytest_cache/
 .coverage

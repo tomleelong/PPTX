@@ -8,7 +8,8 @@ A Python tool for creating PowerPoint presentations programmatically using the `
 - **Multiple Slide Types**: Support for title slides, bullet point slides, text slides, and image slides
 - **JSON-Based Outlines**: Create presentations from structured JSON files
 - **Command Line Interface**: Easy-to-use CLI for quick presentation generation
-- **Customizable Styling**: Modify colors, fonts, and layouts
+- **Template Support**: Use existing PowerPoint templates for consistent styling
+- **Template Analysis**: Analyze existing presentations to understand layouts and structure
 - **Claude Code Integration**: Designed specifically for use with Claude Code workflows
 
 ## Installation
@@ -57,6 +58,7 @@ python -m src.cli --sample-json my_outline.json
 
 ### Python API
 
+#### Basic Presentation Creation
 ```python
 from src.pptx_creator import PPTXCreator
 
@@ -79,14 +81,26 @@ creator.add_content_slide(
     ]
 )
 
-# Add text slide
-creator.add_text_slide(
-    title="Details",
-    text_content="This slide contains paragraph text instead of bullet points."
-)
-
 # Save the presentation
 creator.save_presentation("my_presentation.pptx")
+```
+
+#### Using Templates for Professional Styling
+```python
+from src.pptx_creator import PPTXCreator
+
+# Create presentation using an existing template
+creator = PPTXCreator("path/to/your/template.pptx")
+
+# Add slides using template styling
+creator.add_title_slide("Professional Presentation", "Using template styling")
+creator.add_content_slide("Key Benefits", [
+    "Consistent professional appearance",
+    "Maintains corporate branding", 
+    "Uses predefined layouts and colors"
+])
+
+creator.save_presentation("styled_presentation.pptx")
 ```
 
 ### JSON Outline Format
@@ -119,7 +133,7 @@ Create presentations from structured JSON files:
 
 ## Examples
 
-Run the basic example:
+### Basic Presentation
 ```bash
 cd examples
 python basic_example.py
@@ -133,15 +147,17 @@ This creates a sample presentation demonstrating various slide types.
 PPTX/
 ├── src/
 │   ├── __init__.py
-│   ├── pptx_creator.py    # Main PowerPoint creation class
+│   ├── pptx_creator.py    # Main PowerPoint creation class (includes template support)
 │   └── cli.py             # Command-line interface
 ├── tests/
 │   └── test_pptx_creator.py
 ├── examples/
 │   ├── basic_example.py
 │   └── sample_outline.json
+├── templates/             # Place your .pptx templates here (gitignored)
 ├── requirements.txt
 ├── pyproject.toml
+├── CLAUDE.md
 └── README.md
 ```
 
