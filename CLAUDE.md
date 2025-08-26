@@ -11,7 +11,7 @@ This is a PowerPoint creation toolkit built with Python and the python-pptx libr
 ## Project Structure
 ```
 src/
-├── pptx_creator.py    # Main PowerPoint creation class
+├── pptx_creator.py    # Main PowerPoint creation class (includes template support)
 └── cli.py             # Command-line interface
 
 tests/
@@ -20,6 +20,10 @@ tests/
 examples/
 ├── basic_example.py
 └── sample_outline.json
+
+templates/
+├── README.md          # Template usage instructions
+└── *.pptx             # User template files (gitignored)
 ```
 
 ## Development Commands
@@ -58,6 +62,8 @@ cd examples && python basic_example.py
 
 ### Creating Presentations
 Always use the `PPTXCreator` class:
+
+**Basic presentations:**
 ```python
 from src.pptx_creator import PPTXCreator
 
@@ -65,6 +71,17 @@ creator = PPTXCreator()
 creator.add_title_slide("Title", "Subtitle")
 creator.add_content_slide("Content", ["Point 1", "Point 2"])
 creator.save_presentation("output.pptx")
+```
+
+**Template-based presentations:**
+```python
+from src.pptx_creator import PPTXCreator
+
+# Use existing template for professional styling
+creator = PPTXCreator("templates/my_template.pptx")
+creator.add_title_slide("Professional Title", "Uses template styling")
+creator.add_content_slide("Content", ["Point 1", "Point 2"])
+creator.save_presentation("styled_output.pptx")
 ```
 
 ### JSON Structure
@@ -82,6 +99,19 @@ Use this format for outline-based presentations:
 ```
 
 ## Common Tasks
+
+### Using Templates
+1. **Prepare your template:**
+   - Open template in PowerPoint
+   - Delete all content slides (keep only slide master and layouts)
+   - Save as cleaned template in `templates/` directory
+
+2. **Use in code:**
+   ```python
+   creator = PPTXCreator("templates/your_template.pptx")
+   ```
+
+3. **Template files are gitignored** - your company/personal templates stay private
 
 ### Adding New Slide Types
 1. Add method to `PPTXCreator` class in `src/pptx_creator.py`
