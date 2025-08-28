@@ -24,7 +24,13 @@ examples/
 templates/
 ├── README.md          # Template usage instructions
 └── *.pptx             # User template files (gitignored)
+
+content/
+└── *.md, *.txt, etc.  # Private notes and source materials (gitignored)
 ```
+
+### Content Folder
+The `content/` directory is for storing private notes, meeting minutes, and source documents that you're converting into presentations. This folder is gitignored to keep sensitive materials out of version control. Store your committee notes, agendas, and other confidential documents here while working on presentations.
 
 ## Development Commands
 

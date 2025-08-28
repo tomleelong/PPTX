@@ -155,11 +155,21 @@ PPTX/
 │   ├── basic_example.py
 │   └── sample_outline.json
 ├── templates/             # Place your .pptx templates here (gitignored)
+├── content/               # Private notes and source materials (gitignored)
 ├── requirements.txt
 ├── pyproject.toml
 ├── CLAUDE.md
 └── README.md
 ```
+
+### Content Folder
+
+The `content/` directory is provided for storing your private notes, meeting minutes, and source materials that you want to convert into presentations. This directory is gitignored to keep your private documents secure and out of version control. Use this folder to:
+
+- Store meeting notes and agendas
+- Keep draft content for presentations
+- Maintain reference materials
+- Save any documents you're converting to PowerPoint format
 
 ## Testing
 
@@ -212,4 +222,4 @@ python -m isort src/ tests/ examples/
 
 ## License
 
-This project is created for use with Claude Code. Please refer to your Claude Code license for usage terms.
+This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
